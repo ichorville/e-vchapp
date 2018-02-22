@@ -26,6 +26,9 @@ export class SimpleDatatableComponent implements OnInit, OnChanges {
 	isDeletable: boolean;
 
 	@Input()
+	isNavigatable: boolean;
+
+	@Input()
 	rows: any[];
 
 	@Input()
@@ -33,6 +36,9 @@ export class SimpleDatatableComponent implements OnInit, OnChanges {
 
 	@Input()
 	title: string;
+
+	@Input()
+	url: string;
 
 	@Input()
 	formElements: any[];
