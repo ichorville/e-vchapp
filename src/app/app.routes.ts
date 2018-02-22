@@ -8,7 +8,7 @@ import { AuthService } from './services/auth/auth.service';
 export const rootRouterConfig: Routes = [
 	{
 		path: '',
-		redirectTo: 'dashboard',
+		redirectTo: 'products',
 		pathMatch: 'full'
 	},
 	{
@@ -27,6 +27,11 @@ export const rootRouterConfig: Routes = [
 		component: AdminLayoutComponent,
 		canActivate: [AuthService],
 		children: [
+			{
+				path: 'purchase-orders',
+				loadChildren: './views/purchase-order/purchase-order.module#PurchaseOrderModule',
+				data: { title: 'Purchase Orders', breadcrumb: 'Purchase Orders' }
+			},
 			{
 				path: 'dashboard',
 				loadChildren: './views/others/others.module#OthersModule',
