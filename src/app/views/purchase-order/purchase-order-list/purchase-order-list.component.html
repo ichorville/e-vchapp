@@ -1,3 +1,67 @@
-<p>
-  purchase-order-list works!
-</p>
+<mat-card class="p-0">
+	<mat-card-title></mat-card-title>
+	<mat-card-content>
+		<form [formGroup]="form">
+			<div fxLayout="row" fxLayoutWrap="wrap">
+				<div fxFlex="100" fxFlex.gt-xs="45" class="pr-1">
+					<div>
+						<mat-form-field class="full-width">
+                            <input 
+								matInput
+								name="date"
+								formControlName="date"
+								placeholder="Date" 
+								autocomplete="off"
+								[matDatepicker]="appDatepicker">
+                            
+							<mat-datepicker-toggle matSuffix [for]="appDatepicker"></mat-datepicker-toggle>
+
+							<mat-error *ngIf="form.controls['date'].hasError('required') && 
+								form.controls['date'].touched">Date is required</mat-error>
+                        </mat-form-field>
+						<mat-datepicker #appDatepicker></mat-datepicker>
+					</div>
+				</div>
+				<div fxFlex="100" fxFlex.gt-xs="45" class="pr-1">
+					<div>
+						<mat-form-field class="full-width">
+							<mat-select 
+								placeholder="Agent"
+								name="agent"
+								formControlName="agent">
+								<mat-option *ngFor="let agent of agents" [value]="agent.id">
+									{{ agent.name }}
+								</mat-option>
+							</mat-select>
+
+							<mat-error *ngIf="form.controls['agent'].hasError('required') && 
+								form.controls['agent'].touched">Agent is required</mat-error>
+                        </mat-form-field>
+					</div>
+				</div>
+				<div fxFlex="100" fxFlex.gt-xs="10" class="pr-1">
+					<div class="pb-1">
+						<button mat-raised-button color="accent" class="mr-1"
+							[disabled]="form.invalid"
+							(click)="filterResults(form)">View</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<!-- Simple datatable module -->
+		<app-simple-datatable
+			*ngIf="loadingCompleted"
+			[url]="url"
+			[isSearchable]="true"
+			[isMultiSelect]="false"
+			[isEditable]="false"
+			[isNavigatable]="true"
+			[isDeletable]="false"
+			[rows]="rows"
+			[columns]="columns"
+			(onLoad)="closeLoader($event)">
+		</app-simple-datatable>
+
+	</mat-card-content>
+</mat-card>
