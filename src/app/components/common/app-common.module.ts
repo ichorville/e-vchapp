@@ -20,7 +20,8 @@ import {
 	MatRadioModule,
 	MatCheckboxModule,
 	MatCardModule,
-	MatProgressSpinnerModule
+	MatProgressSpinnerModule, 
+	MatExpansionModule
 } from '@angular/material';
 import { TopbarComponent } from './topbar/topbar.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -53,6 +54,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 		MatCheckboxModule,
 		MatCardModule,
 		MatProgressSpinnerModule,
+		MatExpansionModule,
 		CommonDirectivesModule,
 		TranslateModule
 	],
