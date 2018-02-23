@@ -95,4 +95,12 @@ export class PriceRevisionComponent implements OnInit {
 	closeLoader(event) {
 		this.loader.close();
 	}
+
+	onSumit() {
+
+	}
+
+	onMapCompletion() {
+		
+	}
 }

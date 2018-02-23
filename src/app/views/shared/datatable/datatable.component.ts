@@ -134,4 +134,8 @@ export class DatatableComponent implements OnInit, OnChanges {
 			return true;
 		}
 	}
+
+	selectToggleAll() {
+		
+	}
 }

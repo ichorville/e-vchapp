@@ -39,7 +39,7 @@ export class EntityMappingComponent implements OnInit {
 	isSidenavOpen: Boolean = true;
 	@ViewChild(MatSidenav) private sideNave: MatSidenav;
 
-	currentMapping = {};
+	currentMapping: any;
 	mapEntity = {};
 
 	constructor(
