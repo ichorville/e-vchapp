@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatProgressBar, MatButton } from '@angular/material';
+import { MatProgressBar, MatButton, MatSnackBar } from '@angular/material';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -18,7 +18,8 @@ export class SigninComponent implements OnInit {
 
 	constructor(
 		private _as: AuthService,
-		private router: Router
+		private router: Router,
+		private snackBar: MatSnackBar
 	) { }
 
 	ngOnInit() {
@@ -37,10 +38,21 @@ export class SigninComponent implements OnInit {
 
 		this._as.validateUser(signinData).then((result) => {
 			if (result == true) {
-				this.router.navigateByUrl(`/dashboard`);
+				this.openSnackBar('Login Successful');
+				setTimeout(() => {
+					this.router.navigateByUrl(`/dashboard`);
+				}, 2000);
 			} else {
-				window.location.reload();
+				this.openSnackBar('Incorrect Username and Password');	
+				this.signinForm.setValue({ username: '', password: '', rememberMe: false });
+
+				this.submitButton.disabled = false;
+				this.progressBar.mode = 'determinate';
 			}
 		});
+	}
+
+	openSnackBar(message) {
+		this.snackBar.open(`${ message }`, 'close', { duration: 2000 });
 	}
 }
