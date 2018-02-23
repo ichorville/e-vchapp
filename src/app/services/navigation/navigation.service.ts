@@ -21,18 +21,18 @@ export class NavigationService {
 
 	defaultMenu: IMenuItem[] = [
 		{
-			name: 'Purchase-Orders',
-			type: 'link',
-			tooltip: 'Purchase-Orders',
-			icon: 'receipt',
-			state: 'purchase-orders'
-		},
-		{
 			name: 'DASHBOARD',
 			type: 'link',
 			tooltip: 'Dashboard',
 			icon: 'dashboard',
 			state: 'dashboard'
+		},
+		{
+			name: 'Purchase-Orders',
+			type: 'link',
+			tooltip: 'Purchase-Orders',
+			icon: 'receipt',
+			state: 'purchase-orders'
 		},
 		{
 			name: 'Products',
