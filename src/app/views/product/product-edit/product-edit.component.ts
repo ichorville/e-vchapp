@@ -36,7 +36,7 @@ export class ProductEditComponent implements OnInit {
 		private route: ActivatedRoute,
 		private _ps: ProductService
 	) { 
-		this.url = 'products/list';
+		this.url = 'products';
 		this.product = {};
 		this.steps = [];
 		this.asms = [];

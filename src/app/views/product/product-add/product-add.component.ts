@@ -34,7 +34,7 @@ export class ProductAddComponent implements OnInit {
 		private router: Router,
 		private _ps: ProductService
 	) {
-		this.url = 'products/list';
+		this.url = 'products/config';
 		this.steps = [];
 		this.asms = [];
 		this.distributters = [];
