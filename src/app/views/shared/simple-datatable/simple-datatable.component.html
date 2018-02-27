@@ -1,31 +1,32 @@
-<mat-toolbar color="primary" class="inbox-toolbar" *ngIf="isMultiSelect">
+<mat-toolbar>
 	<!-- multiple user options and search toolbar -->
-	<mat-checkbox (change)="selectToggleAll()" class="inbox-toggle-all mr-1">
+	<mat-checkbox (change)="selectToggleAll()" class="inbox-toggle-all mr-1"
+		*ngIf="isMultiSelect">
 		<small>All</small>
 	</mat-checkbox>
-	<button mat-icon-button matTooltip="Move to trash">
+	<button mat-icon-button matTooltip="Move to trash" *ngIf="toogleAll">
 		<mat-icon>delete</mat-icon>
 	</button>
-	<button mat-icon-button matTooltip="Mark as important" class="">
+	<button mat-icon-button matTooltip="Mark as important"*ngIf="toogleAll">
 		<mat-icon>folder_special</mat-icon>
 	</button>
-	<button mat-icon-button matTooltip="Move to archive">
+	<button mat-icon-button matTooltip="Move to archive" *ngIf="toogleAll">
 		<mat-icon>archive</mat-icon>
 	</button>
-	<button mat-icon-button matTooltip="Report spam">
+	<button mat-icon-button matTooltip="Report spam" *ngIf="toogleAll">
 		<mat-icon>error</mat-icon>
 	</button>
 	<span style="flex: 1 1 auto;"></span>
-	<button mat-raised-button style="color:#3f51b5;"
-		(click)="addRecord()">Add {{ title }}</button>
-</mat-toolbar>
-<mat-toolbar class="search-toolbar" *ngIf="isSearchable">
 	<!-- Filter by Columns -->
-	<app-search style="width:100%;"
+	<app-search *ngIf="isSearchable"
 		[terms]="searchResults"
 		[placeholder]="'Search All Columns'"
 		(onFilter)="reDraw($event)">
 	</app-search>
+	<button mat-icon-button
+		(click)="addRecord()" *ngIf="isAddable">
+		<mat-icon>add_circle</mat-icon>
+	</button>
 </mat-toolbar>
 <!-- Simple Datatable view -->
 <div class="Table" *ngIf="isValid">
@@ -35,7 +36,7 @@
 		<div class="Table-row-item cell" *ngFor="let column of columns">
 			{{ column.name }}
 		</div>
-		<div class="Table-row-item cell" *ngIf="isEditable || isNavigatable || isDeletable">Actions</div>
+		<div class="Table-row-item cell ta-right" *ngIf="isEditable || isNavigatable || isDeletable"></div>
 	</div>
 	<!-- Body section -->
 	<div class="Table-row" *ngFor="let row of filteredRows">
@@ -49,7 +50,7 @@
 				<mat-chip *ngIf="!row[column.attr]" color="primary">inactive</mat-chip>
 			</span>
 		</div>
-		<div class="Table-row-item data-cell" style="padding-bottom:0px;padding-top:5px;"
+		<div class="Table-row-item data-cell ta-right" style="padding-bottom:0px;padding-top:5px;"
 			data-header="Actions" *ngIf="isEditable || isNavigatable || isDeletable">
 			<button mat-icon-button color="primary"
 				*ngIf="isEditable"
@@ -65,7 +66,7 @@
 			<button mat-icon-button color="warn"
 				*ngIf="isDeletable"
 				(click)="deleteRecord(row['toBeDeleted']);">
-				<mat-icon>delete</mat-icon>
+				<mat-icon>clear</mat-icon>
 			</button>
 		</div>
 	</div>
