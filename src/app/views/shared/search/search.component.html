@@ -11,7 +11,12 @@
   
 <div id="wrap" matTooltip="Search">
 	<form autocomplete="off">
-		<input id="search" name="search" type="text" placeholder="Search All Columns">
+		<input 
+			id="search" 
+			name="search" 
+			type="text" 
+			placeholder="Search All Columns"
+			(keyup)="updateFilter($event.target.value)">
 	</form>
 	<button mat-icon-button  type="submit">
 		<mat-icon>search</mat-icon>
