@@ -16,7 +16,8 @@ import * as domHelper from '../../../../helpers/dom.helper';
 
 @Component({
 	selector: 'app-admin-layout',
-	templateUrl: './admin-layout.template.html'
+	templateUrl: './admin-layout.component.html',
+	styleUrls: ['./admin-layout.component.css']
 })
 export class AdminLayoutComponent implements OnInit {
 	private isMobile;
