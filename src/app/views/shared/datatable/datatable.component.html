@@ -1,6 +1,6 @@
 <mat-sidenav-container>
 	<!-- right side topbar -->
-	<mat-toolbar color="primary" class="inbox-toolbar">
+	<mat-toolbar>
 		<!-- multiple email select and control -->
 		<mat-checkbox (change)="selectToggleAll()" class="inbox-toggle-all mr-1">
 			<small>All</small>
@@ -24,11 +24,14 @@
 			[placeholder]="'Search All Columns'"
 			(onFilter)="reDraw($event)">
 		</app-search>
+		<button mat-icon-button matTooltip="Add">
+			<mat-icon>add_circle</mat-icon>
+		</button>
 	</mat-toolbar>
 
 	<div *ngIf="isValid" class="inbox-hold">
 		<!-- Column header -->
-		<mat-toolbar fxHide.lt-sm="true" class="inbox-toolbar" [fxHide.gt-sm]="isMobile" style="border-bottom:1px solid rgba(0, 0, 0, .12);font-size:1.115rem !important;">
+		<mat-toolbar fxHide.lt-sm="true" [fxHide.gt-sm]="isMobile" style="border-bottom:1px solid rgba(0, 0, 0, .12);font-size:1.115rem !important;">
 			
 		</mat-toolbar>
 
