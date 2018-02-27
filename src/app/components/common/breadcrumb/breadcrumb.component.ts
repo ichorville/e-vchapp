@@ -29,6 +29,7 @@ export class BreadcrumbComponent implements OnInit {
 					return item;
 				}
 				// prepend previous part to current part
+				// item.url = `${this.routeParts[i - 1].url}/${item.url}`;
 				item.url = `${this.routeParts[i - 1].url}/${item.url}`;
 				return item;
 			});
