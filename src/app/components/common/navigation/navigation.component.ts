@@ -3,7 +3,8 @@ import { NavigationService } from "../../../services/navigation/navigation.servi
 
 @Component({
 	selector: 'navigation',
-	templateUrl: './navigation.template.html'
+	templateUrl: './navigation.component.html',
+	styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
 	hasIconTypeMenuItem;
