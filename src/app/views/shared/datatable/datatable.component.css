@@ -38,3 +38,17 @@ mat-icon {
 mat-panel-title {
   font-size: 12px;
 }
+
+:host/deep/.mat-checkbox-inner-container {
+  width: 15px !important;
+  height: 15px !important;
+  margin-top: 5px;
+}
+
+.no-mr {
+  margin-top: 0px;
+}
+
+.mt-4 {
+  margin-top: 4px;
+}

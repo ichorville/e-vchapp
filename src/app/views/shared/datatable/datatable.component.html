@@ -1,9 +1,10 @@
 <mat-sidenav-container>
 	<!-- right side topbar -->
-	<mat-toolbar>
+	<mat-toolbar style="height:35px !important;">
 		<!-- multiple email select and control -->
-		<mat-checkbox (change)="selectToggleAll()" class="inbox-toggle-all mr-1">
-			<small>All</small>
+		<mat-checkbox (change)="selectToggleAll()" class="inbox-toggle-all mr-1"
+			style="margin-top:-5px !important;">
+			<small style="font-size:15px;">All</small>
 		</mat-checkbox>
 		<button mat-icon-button matTooltip="Move to trash" *ngIf="toogleAll">
 			<mat-icon>delete</mat-icon>
@@ -17,17 +18,17 @@
 		<button mat-icon-button matTooltip="Report spam" *ngIf="toogleAll">
 			<mat-icon>error</mat-icon>
 		</button>
-		<span style="flex: 1 1 auto;"></span>
 		<!-- Filter by Columns -->
-		<app-search
+		<app-search *ngIf="!toogleAll"
 			[terms]="searchResults"
 			[placeholder]="'Search All Columns'"
 			(onFilter)="reDraw($event)">
 		</app-search>
+		<span style="flex: 1 1 auto;"></span>
 		<a mat-icon-button matTooltip="Add" 
 			routerLinkActive="active"
 			routerLink="/{{ url }}/config">
-			<mat-icon>add_circle</mat-icon>
+			<mat-icon>add_circle_outline</mat-icon>
 		</a>
 	</mat-toolbar>
 
@@ -57,18 +58,19 @@
 
 					<div appAccordion fxFlex="18 1 auto" fxLayout="row">
 
-						<div class="mr-1 hidden-on-open" [ngStyle]="{minWidth: '120px'}">{{ message.name }}</div>
-						<div class="mr-1 hidden-on-open" [ngStyle]="{minWidth: '220px'}">{{ message.subject }}</div>
+						<div class="mr-1 mt-4 hidden-on-open" [ngStyle]="{minWidth: '120px'}">{{ message.name }}</div>
+						<div class="mr-1 mt-4 hidden-on-open" [ngStyle]="{minWidth: '220px'}">{{ message.subject }}</div>
 
-						<div class="mr-1 hidden-on-open" [ngStyle]="{minWidth: '220px'}"
+						<div class="mr-1 mt-4 hidden-on-open" [ngStyle]="{minWidth: '220px'}"
 							fxHide [fxHide.gt-sm]="isMobile">{{ message.subject }}</div>
-						<div class="mr-1 hidden-on-open" [ngStyle]="{minWidth: '220px'}"
+						<div class="mr-1 mt-4 hidden-on-open" [ngStyle]="{minWidth: '220px'}"
 							fxHide [fxHide.gt-sm]="isMobile">{{ message.subject }}</div>
 					</div>
 					<span fxFlex fxHide [fxHide.gt-sm]="isMobile"></span>
 					
-					<small class="hidden-on-open" [ngClass]="{'padding-top': isMobile === true}">{{ message.date | date }}</small>
+					<small class="hidden-on-open mt-4" [ngClass]="{'padding-top': isMobile === true}">{{ message.date | date }}</small>
 					<mat-icon 
+						style="margin-top:2px;"
 						mat-icon-button 
 						[matMenuTriggerFor]="menu"
 						[ngClass]="{'padding-top': isMobile === true}">
