@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { Http, HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
@@ -24,6 +25,7 @@ export function createTranslateLoader(http: Http) {
 		BrowserModule,
 		BrowserAnimationsModule,
 		HttpModule,
+		HttpClientModule,
 		FormsModule, 
 		ReactiveFormsModule,
 		AppCommonModule,
