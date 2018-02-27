@@ -27,7 +27,7 @@
 	border-top: 0;
 	color: rgba(0, 0, 0, .87);
 	transition: width .3s ease;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 400;
 	line-height: 1.625;
 }
@@ -73,14 +73,17 @@
 .Table-row {
 	width: 100%;
 	background-color: #ffffff;
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 .Table-row:nth-of-type(even) {
 	background-color: #ffffff;
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 .Table-row:nth-of-type(odd) {
-  	background-color: #ffffff;
+	  background-color: #ffffff;
+	  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 @media (min-width: 500px) {
@@ -182,4 +185,20 @@ mat-chip {
 
 :host/deep/app-search .mat-input-underline {
 	background-color: #3f51b5 !important;
+}
+
+mat-toolbar {
+	height: 45px !important;
+	background: #ffffff !important;
+	color: rgba(0, 0, 0, 0.87);
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+mat-icon {
+	font-size: 18px;
+}
+
+.ta-right {
+	text-align: right;
+    display: block;
 }
