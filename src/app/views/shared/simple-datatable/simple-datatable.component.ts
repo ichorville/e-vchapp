@@ -14,6 +14,9 @@ import { DialogFormService } from '../dialog-form/dialog-form.service';
 export class SimpleDatatableComponent implements OnInit, OnChanges {
 
 	@Input()
+	isAddable: boolean;
+	
+	@Input()
 	isSearchable: boolean;
 
 	@Input()
@@ -54,6 +57,8 @@ export class SimpleDatatableComponent implements OnInit, OnChanges {
 	
 	@Output()
 	onDelete: EventEmitter<any>;
+
+	toogleAll = false;
 
 	pages: any[];
 	filteredRows: any[];
@@ -176,5 +181,9 @@ export class SimpleDatatableComponent implements OnInit, OnChanges {
 				this.onDelete.emit(type);
 			}
 		});
+	}
+
+	selectToggleAll() {
+		this.toogleAll = !this.toogleAll;
 	}
 }
