@@ -4,6 +4,7 @@ import { Subscription } from "rxjs/Subscription";
 import { MediaChange, ObservableMedia } from "@angular/flex-layout";
 import { MatSidenav, MatDialog, MatExpansionPanel } from '@angular/material';
 
+import { AppConfirmService } from '../../../services/app-confirm/app-confirm.service';
 import { DatatableService } from './datatable.service';
 
 @Component({
@@ -24,6 +25,8 @@ export class DatatableComponent implements OnInit, OnChanges {
 	searchResults: any[];
 	totalPaginatedRows: any[];
 
+	toogleAll = false;
+
 	selectedPage: number;
 
 	isValid: boolean;
@@ -40,7 +43,8 @@ export class DatatableComponent implements OnInit, OnChanges {
 		private router: Router,
 		private media: ObservableMedia,
 		private _ds: DatatableService,
-		public composeDialog: MatDialog
+		public composeDialog: MatDialog,
+		private confirmService: AppConfirmService
 	) {		
 		this.isValid = true;
 		this.rows = [];
@@ -136,6 +140,16 @@ export class DatatableComponent implements OnInit, OnChanges {
 	}
 
 	selectToggleAll() {
-		
+		this.toogleAll = !this.toogleAll;
+	}
+
+	deleteRecord(type) {
+		let title = 'Conform';
+		let text = `Delete ${ type } ?`;
+		this.confirmService.confirm(title, text).subscribe((result) => {
+		  	if (result == true) {
+				// this.onDelete.emit(type);
+			}
+		});
 	}
 }
