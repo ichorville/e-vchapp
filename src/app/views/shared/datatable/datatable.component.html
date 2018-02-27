@@ -5,16 +5,16 @@
 		<mat-checkbox (change)="selectToggleAll()" class="inbox-toggle-all mr-1">
 			<small>All</small>
 		</mat-checkbox>
-		<button mat-icon-button matTooltip="Move to trash">
+		<button mat-icon-button matTooltip="Move to trash" *ngIf="toogleAll">
 			<mat-icon>delete</mat-icon>
 		</button>
-		<button mat-icon-button matTooltip="Mark as important" class="">
+		<button mat-icon-button matTooltip="Mark as important"*ngIf="toogleAll">
 			<mat-icon>folder_special</mat-icon>
 		</button>
-		<button mat-icon-button matTooltip="Move to archive">
+		<button mat-icon-button matTooltip="Move to archive" *ngIf="toogleAll">
 			<mat-icon>archive</mat-icon>
 		</button>
-		<button mat-icon-button matTooltip="Report spam">
+		<button mat-icon-button matTooltip="Report spam" *ngIf="toogleAll">
 			<mat-icon>error</mat-icon>
 		</button>
 		<span style="flex: 1 1 auto;"></span>
@@ -24,9 +24,11 @@
 			[placeholder]="'Search All Columns'"
 			(onFilter)="reDraw($event)">
 		</app-search>
-		<button mat-icon-button matTooltip="Add">
+		<a mat-icon-button matTooltip="Add" 
+			routerLinkActive="active"
+			routerLink="/{{ url }}/config">
 			<mat-icon>add_circle</mat-icon>
-		</button>
+		</a>
 	</mat-toolbar>
 
 	<div *ngIf="isValid" class="inbox-hold">
@@ -73,9 +75,10 @@
 						more_vert
 					</mat-icon>
 					<mat-menu #menu="matMenu">
-						<a mat-menu-item routerLinkActive="active">Add</a>
-						<a mat-menu-item routerLinkActive="active">Edit</a>		
-						<button mat-menu-item>Delete</button>
+						<a mat-menu-item routerLinkActive="active" routerLink="/{{ url }}/{{ message.id }}/config">
+							<mat-icon>create</mat-icon>Edit</a>		
+						<button mat-menu-item (click)="deleteRecord(message.name)">
+							<mat-icon>clear</mat-icon>Delete</button>
 					</mat-menu>
 				</mat-expansion-panel-header>
 
