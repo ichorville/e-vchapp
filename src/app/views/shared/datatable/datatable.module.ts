@@ -21,6 +21,9 @@ import { CommonDirectivesModule } from '../../../directives/common/common-direct
 import { PaginationModule } from '../pagination/pagination.module';
 import { SearchModule } from '../search/search.module';
 
+import { AppConfirmModule } from '../../../services/app-confirm/app-confirm.module';
+import { AppConfirmService } from '../../../services/app-confirm/app-confirm.service';
+
 import { DatatableComponent } from './datatable.component';
 import { DatatableService } from './datatable.service';
 
@@ -45,13 +48,15 @@ import { DatatableService } from './datatable.service';
 		QuillModule,
 		CommonDirectivesModule,
 		PaginationModule,
-		SearchModule
+		SearchModule,
+		AppConfirmModule
 	],
 	declarations: [
 		DatatableComponent
 	],
 	providers: [
-		DatatableService
+		DatatableService,
+		AppConfirmService
 	],
 	exports: [
 		DatatableComponent
