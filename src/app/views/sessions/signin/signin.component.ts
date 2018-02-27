@@ -36,8 +36,20 @@ export class SigninComponent implements OnInit {
 		this.submitButton.disabled = true;
 		this.progressBar.mode = 'indeterminate';
 
-		this._as.validateUser(signinData).then((result) => {
-			if (result == true) {
+		// this._as.validateUser(signinData).then((result) => {
+		// 	if (result == true) {
+		// 		
+		// 	} else {
+		// 		this.openSnackBar('Incorrect Username and Password');	
+		// 		this.signinForm.setValue({ username: '', password: '', rememberMe: false });
+
+		// 		this.submitButton.disabled = false;
+		// 		this.progressBar.mode = 'determinate';
+		// 	}
+		// });
+
+		this._as.login(signinData).then(status => {
+			if (status == 200) {
 				this.openSnackBar('Login Successful');
 				setTimeout(() => {
 					this.router.navigateByUrl(`/dashboard`);
