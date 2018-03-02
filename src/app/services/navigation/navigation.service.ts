@@ -49,6 +49,13 @@ export class NavigationService {
 			state: 'distributors/list', 
 		},
 		{
+			name: 'File Upload',
+			type: 'link',
+			tooltip: 'File Upload',
+			icon: 'file_upload',
+			state: 'file-uploads', 
+		},
+		{
 			name: 'Configuration',
 			type: 'dropDown',
 			tooltip: 'Configuration',
