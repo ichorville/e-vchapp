@@ -54,7 +54,7 @@ export const rootRouterConfig: Routes = [
 			},
 			{
 				path: 'file-uploads',
-				loadChildren: './views/file-upload/file-upload.module#FileUploadModule',
+				loadChildren: './views/file-upload/file-upload.module#FileUploaderModule',
 				data: { title: 'File Uploads', breadcrumb: 'File Uploads' }
 			}
 		]
