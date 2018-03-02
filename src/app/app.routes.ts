@@ -51,6 +51,11 @@ export const rootRouterConfig: Routes = [
 				path: 'configuration/prices',
 				loadChildren: './views/configuration/price-list/price-list.module#PriceListModule',
 				data: { title: 'Prices', breadcrumb: 'Prices' }
+			},
+			{
+				path: 'file-uploads',
+				loadChildren: './views/file-upload/file-upload.module#FileUploadModule',
+				data: { title: 'File Uploads', breadcrumb: 'File Uploads' }
 			}
 		]
 	},
