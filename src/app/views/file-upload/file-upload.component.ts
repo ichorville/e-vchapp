@@ -1,15 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 
+import { FileUploader } from 'ng2-file-upload';
+
 @Component({
-  selector: 'app-file-upload',
-  templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.css']
+	selector: 'app-file-upload',
+	templateUrl: './file-upload.component.html',
+	styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent implements OnInit {
 
-  constructor() { }
+	public uploader: FileUploader = new FileUploader({ url: 'http://localhost:3001/upload' });
+	public hasBaseDropZoneOver: boolean = false;
+	console = console;
 
-  ngOnInit() {
-  }
+	constructor() { }
 
+	ngOnInit() {
+		
+	}
+
+	public fileOverBase(e: any): void {
+		this.hasBaseDropZoneOver = e;
+	}
 }
