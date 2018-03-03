@@ -1,24 +1,19 @@
 <mat-card class="p-0">
 	<mat-card-title>
-		<div class="card-title-text">File Upload</div>
+		<div class="card-title-text">File Upload
+			<span fxflex></span>
+			<div class="upload-btn-wrapper" matTooltip="Upload File">
+				<button mat-icon-button>
+					<mat-icon>file_upload</mat-icon>
+				</button>
+				<input 
+					type="file"
+					ng2FileSelect
+					[uploader]="uploader" />
+			</div>
+		</div>
 	</mat-card-title>
 	<mat-card-content>
-		<div class="mb-1">
-			<p>Multiple</p>
-			<input 
-				type="file"
-				ng2FileSelect
-				[uploader]="uploader"
-				multiple>
-				<br/>
-			
-			<p>Single</p>
-			<input 
-				type="file"
-				ng2FileSelect
-				[uploader]="uploader">
-		</div>
-
 		<div class="mb-1">
 			<div ng2FileDrop
 				[ngClass]="{'dz-file-over': hasBaseDropZoneOver}"
