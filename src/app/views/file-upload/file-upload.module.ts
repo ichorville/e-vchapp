@@ -11,6 +11,7 @@ import {
 	MatListModule,
 	MatProgressBarModule,
 	MatButtonModule,
+	MatTooltipModule,
 	MatIconModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -35,6 +36,7 @@ import { FileUploadRoutes } from './file-upload.routing';
 		MatProgressBarModule,
 		MatButtonModule,
 		MatIconModule,
+		MatTooltipModule,
 		FlexLayoutModule,
 		QuillModule,
 		FileUploadModule,
