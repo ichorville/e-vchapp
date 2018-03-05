@@ -9,7 +9,7 @@
 }
 
 
-button {
+.file-upload {
     border-style: dotted;
 }
 .upload-btn-wrapper input[type=file] {
