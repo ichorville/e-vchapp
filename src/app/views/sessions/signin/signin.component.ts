@@ -51,6 +51,7 @@ export class SigninComponent implements OnInit {
 		this._as.login(signinData).then(status => {
 			if (status == 200) {
 				this.openSnackBar('Login Successful');
+				localStorage.setItem('isAuthenticated', 'true');
 				setTimeout(() => {
 					this.router.navigateByUrl(`/dashboard`);
 				}, 2000);
