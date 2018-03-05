@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FileUploader } from 'ng2-file-upload';
+import { FileUploader, FileLikeObject } from 'ng2-file-upload';
 
 @Component({
 	selector: 'app-file-upload',
@@ -9,14 +9,33 @@ import { FileUploader } from 'ng2-file-upload';
 })
 export class FileUploadComponent implements OnInit {
 
-	public uploader: FileUploader = new FileUploader({ url: 'http://localhost:3001/upload' });
+	public uploader: FileUploader = new FileUploader({ url: 'http://localhost:12827/api/file/upload' });
 	public hasBaseDropZoneOver: boolean = false;
 	console = console;
 
 	constructor() { }
 
 	ngOnInit() {
-		
+		this.uploader.onAfterAddingFile = (file) => { 
+			this.uploader.queue.forEach(element => {
+				if (element['file']['name'] == file['file']['name']) {
+					let arr = [];
+					this.uploader.queue.forEach(element => {
+						if (element['file']['name'] == file['file']['name']) {
+							arr.push(element);
+						}
+					});
+					if (arr.length > 1) {
+						this.uploader.removeFromQueue(element);
+					}
+				}
+				if ((element['file']['type'] == 'application/vnd.ms-excel') || (element['file']['type'] == 'text/plain')) {
+
+				} else {
+					this.uploader.removeFromQueue(element);
+				}
+			});
+		};
 	}
 
 	public fileOverBase(e: any): void {
