@@ -26,7 +26,7 @@ export class AuthService implements CanActivate {
 		private http: Http,
 		private router: Router
 	) { 
-		this.url = `http://10.20.10.21/evservice/token`;
+		this.url = `https://10.20.10.21/evservice/token`;
 		this.headers = new Headers({
 			'Content-Type': 'application/x-www-form-urlencoded'	
 		});
