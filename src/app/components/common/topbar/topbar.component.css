@@ -15,3 +15,13 @@ mat-icon {
     text-align: center;
     border-radius: 50%;
 }
+
+.cover {
+    background-image: url("assets/images/bg-header.png") !important;
+    background-size: cover !important;
+    position: relative;
+    z-index: 2;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+}
