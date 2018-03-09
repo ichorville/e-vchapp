@@ -34,7 +34,7 @@ export class SigninComponent implements OnInit {
 		const signinData = this.signinForm.value;
 
 		this.submitButton.disabled = true;
-		this.progressBar.mode = 'indeterminate';
+		// this.progressBar.mode = 'indeterminate';
 
 		// this._as.validateUser(signinData).then((result) => {
 		// 	if (result == true) {
@@ -60,7 +60,7 @@ export class SigninComponent implements OnInit {
 				this.signinForm.setValue({ username: '', password: '', rememberMe: false });
 
 				this.submitButton.disabled = false;
-				this.progressBar.mode = 'determinate';
+				// this.progressBar.mode = 'determinate';
 			}
 		});
 	}

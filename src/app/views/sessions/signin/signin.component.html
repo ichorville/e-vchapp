@@ -1,54 +1,57 @@
-<div class="page-wrap height-100 mat-bg-primary">
-	<div class="session-form-hold">
-		<mat-progress-bar mode="determinate" class="session-progress"></mat-progress-bar>
-		<mat-card>
-			<mat-card-content>
-				<div class="text-center pb-1">
-					<img src="assets/images/axi-logo.png" alt="" class="mb-05">
-					<p class="text-muted m-0">Sign in to your account</p>
+<div class="bg-img">
+	<mat-card>
+		<mat-card-content>
+			<span class="form-logo">
+				<img src="assets/images/hutch-logo.png" alt="" class="mb-05">
+			</span>
+			<span class="form-title">
+				Log In
+			</span>
+			<form [formGroup]="signinForm" (ngSubmit)="signin()">
+				<div>
+					<mat-form-field class="full-width" >
+						<mat-icon class="form-icon">person</mat-icon>
+						<input 
+							matInput 
+							name="username" 
+							[formControl]="signinForm.controls['username']" 
+							placeholder="Username" 
+							value=""
+							autocomplete="off">
+						<mat-error *ngIf="signinForm.controls['username'].hasError('required') && signinForm.controls['username'].touched" class="form-error-msg">
+							Username is required </mat-error>
+					</mat-form-field>
 				</div>
-				<form [formGroup]="signinForm" (ngSubmit)="signin()">
-					<div class="">
-						<mat-form-field class="full-width">
-							<input 
-								matInput 
-								name="username" 
-								[formControl]="signinForm.controls['username']" 
-								placeholder="Username" 
-								value=""
-								autocomplete="off">
-							<mat-error *ngIf="signinForm.controls['username'].hasError('required') && signinForm.controls['username'].touched" class="form-error-msg">
-								Username is required </mat-error>
-						</mat-form-field>
-					</div>
 
-					<div class="">
-						<mat-form-field class="full-width">
-							<input 
-								type="password" 
-								name="password" 
-								matInput 
-								[formControl]="signinForm.controls['password']" 
-								placeholder="Password" 
-								value=""
-								autocomplete="off">
-							<mat-error *ngIf="signinForm.controls['password'].hasError('required') && signinForm.controls['password'].touched" class="form-error-msg">
-								Password is required </mat-error>
-						</mat-form-field>
-					</div>
+				<div>
+					<mat-form-field class="full-width">
+						<mat-icon class="form-icon">https</mat-icon>
+						<input 
+							type="password" 
+							name="password" 
+							matInput 
+							[formControl]="signinForm.controls['password']" 
+							placeholder="Password" 
+							value=""
+							autocomplete="off">
+						<mat-error *ngIf="signinForm.controls['password'].hasError('required') && signinForm.controls['password'].touched" class="form-error-msg">
+							Password is required </mat-error>
+					</mat-form-field>
+				</div>
 
-					<div class="pb-1">
-						<mat-checkbox name="rememberMe" [formControl]="signinForm.controls['rememberMe']" class="pb-1">Remember this computer</mat-checkbox>
-					</div>
+				<div class="pb-1">
+					<mat-checkbox name="rememberMe" [formControl]="signinForm.controls['rememberMe']" class="pb-1">Remember this computer</mat-checkbox>
+				</div>
 
-					<button mat-raised-button class="mat-primary full-width mb-1" [disabled]="signinForm.invalid">Sign in</button>
-					<div class="text-center">
-						<a [routerLink]="'/sessions/forgot-password'" class="mat-primary text-center full-width">Forgot password</a>
-						<span fxFlex></span>
-						<a [routerLink]="'/sessions/signup'" class="mat-primary text-center full-width">Create a new account</a>
-					</div>
-				</form>
-			</mat-card-content>
-		</mat-card>
-	</div>
+				<div  class="text-center" style="padding-bottom:60px;">
+					<button mat-raised-button class="mb-1" [disabled]="signinForm.invalid">Sign in</button>
+				</div>
+				<div class="text-center">
+					<a [routerLink]="'/sessions/forgot-password'" class="mat-primary text-center full-width">Forgot password</a>
+					<span fxFlex></span>
+					<a [routerLink]="'/sessions/signup'" class="mat-primary text-center full-width">Create a new account</a>
+				</div>
+			</form>
+		</mat-card-content>
+	</mat-card>
 </div>
