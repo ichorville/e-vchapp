@@ -128,11 +128,10 @@ a {
 }
 
 button:hover {
-    background: -webkit-linear-gradient(bottom, rgba(250,174,22,1) 1%, rgba(255,65,13,1) 80%);
-    color: white;
+   
 }
 
 img {
-    max-width: 85%;
-    padding-left: 0px;
+    max-width: 65%;
+    padding-top: 15px;
 }
