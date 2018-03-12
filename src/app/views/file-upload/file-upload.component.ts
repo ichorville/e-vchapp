@@ -9,11 +9,11 @@ import { FileUploader, FileLikeObject } from 'ng2-file-upload';
 })
 export class FileUploadComponent implements OnInit {
 
-	public uploader: FileUploader = new FileUploader({ url: 'http://localhost:12827/api/file/upload' });
+	public uploader: FileUploader = new FileUploader({ url: '`https://10.20.10.21/file/upload' });
 	public hasBaseDropZoneOver: boolean = false;
 	console = console;
 
-	constructor() { }
+	constructor () { }
 
 	ngOnInit() {
 		this.uploader.onAfterAddingFile = (file) => { 
