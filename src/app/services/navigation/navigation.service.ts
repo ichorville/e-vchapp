@@ -49,11 +49,15 @@ export class NavigationService {
 			state: 'distributors/list', 
 		},
 		{
-			name: 'File Upload',
-			type: 'link',
-			tooltip: 'File Upload',
-			icon: 'file_upload',
-			state: 'file-uploads', 
+			name: 'Serials',
+			type: 'dropDown',
+			tooltip: 'Serials',
+			icon: 'line_style',
+			state: 'serials', 
+			sub: [
+				{ name: 'Upload', state: 'upload' },
+				{ name: 'Mismatch', state: 'mismatch' }
+			]
 		},
 		{
 			name: 'Configuration',
