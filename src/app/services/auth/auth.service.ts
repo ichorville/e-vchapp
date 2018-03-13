@@ -43,13 +43,17 @@ export class AuthService implements CanActivate {
 	}
 
 	login(formData: any): Promise<any> {
+		alert('came in');
 		let object = `grant_type=password&username=${formData['username']}&password=${formData['password']}`;
 		try {
 			return this.http.post(this.url, object, this.options).toPromise().then((response) => {
+				alert(response.status);
 				return response.status;
+			}).catch(error => {
+				alert(error);
 			});
 		} catch (error) {
-			
+			alert(error);
 		}
 	}
 }
