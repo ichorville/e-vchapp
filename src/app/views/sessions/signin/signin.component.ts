@@ -49,18 +49,23 @@ export class SigninComponent implements OnInit {
 		// });
 
 		this._as.login(signinData).then(status => {
-			if (status == 200) {
-				this.openSnackBar('Login Successful');
-				localStorage.setItem('isAuthenticated', 'true');
-				setTimeout(() => {
-					this.router.navigateByUrl(`/dashboard`);
-				}, 2000);
-			} else {
-				this.openSnackBar('Incorrect Username and Password');	
-				this.signinForm.setValue({ username: '', password: '', rememberMe: false });
-
-				this.submitButton.disabled = false;
-				// this.progressBar.mode = 'determinate';
+			alert('Promise method in');
+			try {
+				if (status == 200) {
+					this.openSnackBar('Login Successful');
+					localStorage.setItem('isAuthenticated', 'true');
+					setTimeout(() => {
+						this.router.navigateByUrl(`/dashboard`);
+					}, 2000);
+				} else {
+					this.openSnackBar('Incorrect Username and Password');	
+					this.signinForm.setValue({ username: '', password: '', rememberMe: false });
+	
+					this.submitButton.disabled = false;
+					// this.progressBar.mode = 'determinate';
+				}
+			} catch (e) {
+				alert(e);
 			}
 		});
 	}
