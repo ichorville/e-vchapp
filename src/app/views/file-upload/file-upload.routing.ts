@@ -5,12 +5,12 @@ import { FileUploadComponent } from './file-upload.component';
 export const FileUploadRoutes: Routes = [
     {
 		path: '',
-		redirectTo: '/file-uploads',
+		redirectTo: '/serials/upload',
 		pathMatch: 'full'
 	},
     {
-        path: '',
+        path: 'upload',
         component: FileUploadComponent,
-        data: { title: 'File-Uploads', breadcrumb: 'File-Uploads' },
+        data: { title: 'Serial-Upload', breadcrumb: 'Serial-Upload' },
     }
 ];
