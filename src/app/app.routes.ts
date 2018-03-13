@@ -53,9 +53,9 @@ export const rootRouterConfig: Routes = [
 				data: { title: 'Prices', breadcrumb: 'Prices' }
 			},
 			{
-				path: 'file-uploads',
-				loadChildren: './views/file-upload/file-upload.module#FileUploaderModule',
-				data: { title: 'File Uploads', breadcrumb: 'File Uploads' }
+				path: 'serials',
+				loadChildren: './views/serial/serial.module#SerialModule',
+				data: { title: 'Serials', breadcrumb: 'Serials' }
 			}
 		]
 	},
