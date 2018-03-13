@@ -49,16 +49,4 @@
 			<span class="nav-section-title text-muted" *ngIf="!!item.name">{{item.name | translate}}</span>
 		</div>
 	</div>
-
-	<!-- Only for demo purpose -->
-	<mat-divider></mat-divider>
-	<div>
-		<mat-list-item class="sidebar-list-item">
-			<a (click)="addMenuItem()">
-				<span class="menu-item-tooltip" matTooltip="Add new menu item" matTooltipPosition="right"></span>
-				<mat-icon>add</mat-icon>
-				<span>{{'ADD' | translate}}</span>
-			</a>
-		</mat-list-item>
-	</div>
 </mat-nav-list>
