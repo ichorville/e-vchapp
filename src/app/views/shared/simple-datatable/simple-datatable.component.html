@@ -1,8 +1,10 @@
-<mat-toolbar>
+<mat-toolbar [ngClass]="{'height': isMultiSelect == true || isSearchable == true || isAddable == true}">
+	<span *ngIf="!isMultiSelect && title"
+		style="font-weight: 400;font-size: 1rem !important;">{{ title }}</span>
 	<!-- multiple user options and search toolbar -->
 	<mat-checkbox (change)="selectToggleAll()" class="inbox-toggle-all mr-1"
-		*ngIf="isMultiSelect">
-		<small>All</small>
+		*ngIf="isMultiSelect" style="margin-top:0px !important;">
+		<small style="font-size:15px;">All</small>
 	</mat-checkbox>
 	<button mat-icon-button matTooltip="Move to trash" *ngIf="toogleAll">
 		<mat-icon>delete</mat-icon>
@@ -16,13 +18,13 @@
 	<button mat-icon-button matTooltip="Report spam" *ngIf="toogleAll">
 		<mat-icon>error</mat-icon>
 	</button>
-	<span style="flex: 1 1 auto;"></span>
 	<!-- Filter by Columns -->
-	<app-search *ngIf="isSearchable"
+	<app-search *ngIf="isSearchable && !toogleAll"
 		[terms]="searchResults"
 		[placeholder]="'Search All Columns'"
 		(onFilter)="reDraw($event)">
 	</app-search>
+	<span style="flex: 1 1 auto;"></span>
 	<button mat-icon-button
 		(click)="addRecord()" *ngIf="isAddable">
 		<mat-icon>add_circle</mat-icon>
@@ -36,7 +38,7 @@
 		<div class="Table-row-item cell" *ngFor="let column of columns">
 			{{ column.name }}
 		</div>
-		<div class="Table-row-item cell ta-right" *ngIf="isEditable || isNavigatable || isDeletable"></div>
+		<div class="Table-row-item cell ta-right" *ngIf="isEditable || isNavigatable || isDeletable || isDownloadable"></div>
 	</div>
 	<!-- Body section -->
 	<div class="Table-row" *ngFor="let row of filteredRows">
@@ -51,7 +53,7 @@
 			</span>
 		</div>
 		<div class="Table-row-item data-cell ta-right" style="padding-bottom:0px;padding-top:5px;"
-			data-header="Actions" *ngIf="isEditable || isNavigatable || isDeletable">
+			data-header="Actions" *ngIf="isEditable || isNavigatable || isDeletable || isDownloadable">
 			<button mat-icon-button color="primary"
 				*ngIf="isEditable"
 				(click)="editRecord(row)">
@@ -67,6 +69,11 @@
 				*ngIf="isDeletable"
 				(click)="deleteRecord(row['toBeDeleted']);">
 				<mat-icon>clear</mat-icon>
+			</button>
+			<button mat-icon-button color="warn"
+				*ngIf="isDownloadable"
+				(click)="downloadRecord(row['toBeDeleted']);">
+				<mat-icon>file_download</mat-icon>
 			</button>
 		</div>
 	</div>
