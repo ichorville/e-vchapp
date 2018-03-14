@@ -40,10 +40,10 @@ import { SerialUploadRoutes } from './serial-upload.routing';
 		FlexLayoutModule,
 		QuillModule,
 		FileUploadModule,
-		// RouterModule.forChild(SerialUploadRoutes)
+		RouterModule.forChild(SerialUploadRoutes)
 	],
 	declarations: [
-		// SerialUploadComponent
+		SerialUploadComponent
 	]
 })
 export class SerialUploadModule { }
