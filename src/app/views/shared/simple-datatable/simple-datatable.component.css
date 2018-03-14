@@ -183,10 +183,6 @@ mat-chip {
     color: #3f51b5;
 }
 
-:host/deep/app-search .mat-input-underline {
-	background-color: #3f51b5 !important;
-}
-
 mat-toolbar {
 	height: 45px !important;
 	background: #ffffff !important;
@@ -202,3 +198,17 @@ mat-icon {
 	text-align: right;
     display: block;
 }
+
+:host/deep/.mat-checkbox-inner-container {
+	width: 15px !important;
+	height: 15px !important;
+	margin-top: -5px;
+  }
+
+  :host/deep/.mat-checkbox-label {
+	line-height: 2px !Important
+  }
+
+  .height {
+	height:35px !important;
+  }
