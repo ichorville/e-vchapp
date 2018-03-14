@@ -32,6 +32,9 @@ export class SimpleDatatableComponent implements OnInit, OnChanges {
 	isNavigatable: boolean;
 
 	@Input()
+	isDownloadable: boolean;
+
+	@Input()
 	rows: any[];
 
 	@Input()
