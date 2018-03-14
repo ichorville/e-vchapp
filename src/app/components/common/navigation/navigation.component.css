@@ -1,3 +1,7 @@
 mat-icon {
     font-size: 18px;
 }
+
+:host/deep/mat-nav-list.sub-menu {
+    overflow-y: hidden !important;
+}
