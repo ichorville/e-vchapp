@@ -17,7 +17,7 @@ mat-icon {
 }
 
 .cover {
-    background-image: url("assets/images/bg-header.png") !important;
+    background-image: url('assets/images/bg-header.png') !important;
     background-size: cover !important;
     position: relative;
     z-index: 2;

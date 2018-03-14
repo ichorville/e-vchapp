@@ -5,3 +5,10 @@ mat-icon {
 :host/deep/mat-nav-list.sub-menu {
     overflow-y: hidden !important;
 }
+
+:host/deep/.ng-star-inserted {
+    display: inline-block;
+    width: -webkit-fill-available;
+    /* remove after discussion */
+    margin-top: -3px;
+}
