@@ -10,7 +10,8 @@
   
   
   .file-upload {
-      border-style: dotted;
+    border-width: 1px;
+    border-style: solid;
   }
   .upload-btn-wrapper input[type=file] {
     font-size: 100px;
@@ -24,3 +25,11 @@
       font-size: 18px;
   }
   
+  .rightside-content-hold {
+      padding: 0px;
+  }
+
+  mat-card {
+    box-shadow: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
