@@ -20,13 +20,13 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { SerialUploadComponent } from './serial-upload/serial-upload.component';
 
 import { SerialUploadModule } from './serial-upload/serial-upload.module';
-import { SerialMismatchModule } from './serial-mismatch/serial-mismatch.module';
+import { SerialManagementModule } from './serial-management/serial-management.module';
 
 @NgModule({
 	imports: [
         CommonModule,
         SerialUploadModule,
-        SerialMismatchModule
+        SerialManagementModule
     ],
     declarations: [
         
