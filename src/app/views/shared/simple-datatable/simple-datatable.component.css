@@ -212,3 +212,15 @@ mat-icon {
   .height {
 	height:35px !important;
   }
+  
+  .processed {
+	border-color: coral;
+  }
+
+  .ready_to_process {
+	border-color: #f15863;
+  }
+
+  .add_to_system {
+	border-color: #1d9d74;
+  }
