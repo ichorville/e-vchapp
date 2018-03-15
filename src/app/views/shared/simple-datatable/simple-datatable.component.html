@@ -51,8 +51,22 @@
 				<mat-chip *ngIf="row[column.attr]" color="primary" selected="true">active</mat-chip>
 				<mat-chip *ngIf="!row[column.attr]" color="primary">inactive</mat-chip>
 			</span>
+			<span *ngSwitchCase="'button'" style="width: -webkit-fill-available;">
+				<button 
+					mat-raised-button 
+					style="font-size: 12px; width: 100%; line-height: 18px; 
+					top: -4px; font-weight: bold !important; border-style: solid; border-width: 2px;"
+					(click)="loadRowData(row)"
+					[ngClass]="{
+						'processed': row[column.attr] == 'Processed',
+						'ready_to_process': row[column.attr] == 'Ready to Process',
+						'add_to_system': row[column.attr] == 'Add to System'
+					}">
+					 {{ row[column.attr] }}
+				</button>
+			</span>
 		</div>
-		<div class="Table-row-item data-cell ta-right" style="padding-bottom:0px;padding-top:5px;"
+		<div class="Table-row-item data-cell" style="padding-bottom:0px;padding-top:5px;"
 			data-header="Actions" *ngIf="isEditable || isNavigatable || isDeletable || isDownloadable">
 			<button mat-icon-button color="primary"
 				*ngIf="isEditable"

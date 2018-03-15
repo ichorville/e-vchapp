@@ -189,4 +189,8 @@ export class SimpleDatatableComponent implements OnInit, OnChanges {
 	selectToggleAll() {
 		this.toogleAll = !this.toogleAll;
 	}
+
+	loadRowData(row) {
+		
+	}
 }
