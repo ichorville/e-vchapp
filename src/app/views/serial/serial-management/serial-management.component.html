@@ -1,0 +1,18 @@
+<app-simple-datatable
+	*ngIf="uploadLoadingCompleted"
+	[isDeletable]="true"
+	[rows]="summaryRows"
+	[columns]="summaryColumns"
+	[title]="summaryTitle"
+	(onLoad)="closeLoader($event)"
+	(onDelete)="delete($event)">
+</app-simple-datatable>
+
+<app-simple-datatable
+	*ngIf="historyLoadingCompleted"
+	[isDownloadable]="true"
+	[rows]="historyRows"
+	[columns]="historyColumns"
+	[title]="historyTitle"
+	(onLoad)="closeLoader($event)">
+</app-simple-datatable>
