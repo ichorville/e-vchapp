@@ -56,7 +56,7 @@ export class NavigationService {
 			state: 'serials', 
 			sub: [
 				{ name: 'Upload', state: 'upload' },
-				{ name: 'Mismatch', state: 'mismatch' }
+				{ name: 'Management', state: 'management' }
 			]
 		},
 		{
