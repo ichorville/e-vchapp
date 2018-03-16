@@ -8,7 +8,7 @@ mat-icon {
 
 :host/deep/.ng-star-inserted {
     display: inline-block;
-    width: -webkit-fill-available;
+    width: stretch;
     /* remove after discussion */
     margin-top: -3px;
 }
