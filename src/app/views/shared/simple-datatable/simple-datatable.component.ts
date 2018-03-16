@@ -35,6 +35,9 @@ export class SimpleDatatableComponent implements OnInit, OnChanges {
 	isDownloadable: boolean;
 
 	@Input()
+	isMultiDroppable: boolean;
+
+	@Input()
 	rows: any[];
 
 	@Input()
@@ -177,7 +180,7 @@ export class SimpleDatatableComponent implements OnInit, OnChanges {
 	}
 
 	deleteRecord(type) {
-		let title = 'Conform';
+		let title = 'Confirm';
 		let text = `Delete ${ type } ?`;
 		this.confirmService.confirm(title, text).subscribe((result) => {
 		  	if (result == true) {
