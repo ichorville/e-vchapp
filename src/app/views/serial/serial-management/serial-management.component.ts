@@ -54,7 +54,7 @@ export class SerialManagementComponent implements OnInit {
 			{ name: 'Status', attr: 'status', type: 'string' },
 			{ name: 'Item Count', attr: 'count', type: 'string' },
 			{ name: 'Serial Range', attr: 'range', type: 'string' },
-			{ name: 'Badge Id', attr: 'badge', type: 'string' },
+			{ name: 'Batch Id', attr: 'badge', type: 'string' },
 			{ name: 'User', attr: 'user', type: 'string' },
 			{ name: 'Completed Date', attr: 'date', type: 'string' }
 		];
