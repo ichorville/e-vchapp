@@ -12,7 +12,8 @@ import {
 	MatProgressBarModule,
 	MatButtonModule,
 	MatTooltipModule,
-	MatIconModule
+	MatIconModule,
+	MatMenuModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { QuillModule } from 'ngx-quill';
@@ -38,6 +39,7 @@ import { AppLoaderService } from '../../../services/app-loader/app-loader.servic
 		MatProgressBarModule,
 		MatButtonModule,
 		MatIconModule,
+		MatMenuModule,
 		MatTooltipModule,
 		FlexLayoutModule,
 		QuillModule,
