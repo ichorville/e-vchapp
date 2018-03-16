@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormControl, Validators } from '@angular/forms';
 import { FileUploader, FileLikeObject } from 'ng2-file-upload';
+
 @Component({
 	selector: 'app-serial-upload',
 	templateUrl: './serial-upload.component.html',
@@ -8,9 +9,19 @@ import { FileUploader, FileLikeObject } from 'ng2-file-upload';
 })
 export class SerialUploadComponent implements OnInit {
 
-	public uploader: FileUploader = new FileUploader({ url: '`https://10.20.10.21/file/upload' });
+	proCodeControl = new FormControl('', [Validators.required]);
+
+	productCodes = [
+		{ name: 'GO 50' },
+		{ name: 'GO 100' },
+		{ name: 'GO 1000'}
+	];
+
+	public uploader: FileUploader = new FileUploader({ url: 'https://10.20.10.21/file/upload' });
 	public hasBaseDropZoneOver: boolean = false;
 	console = console;
+
+	isSelected = false;
 
 	constructor () { }
 
@@ -39,5 +50,14 @@ export class SerialUploadComponent implements OnInit {
 
 	public fileOverBase(e: any): void {
 		this.hasBaseDropZoneOver = e;
+	}
+
+	onChange(event) {
+		console.log(event.value);
+		if (event.value == undefined) {
+			this.isSelected = false;
+		} else {
+			this.isSelected = true;
+		}
 	}
 }
