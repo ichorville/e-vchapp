@@ -32,21 +32,7 @@ export class SigninComponent implements OnInit {
 
 	signin() {
 		const signinData = this.signinForm.value;
-
 		this.submitButton.disabled = true;
-		// this.progressBar.mode = 'indeterminate';
-
-		// this._as.validateUser(signinData).then((result) => {
-		// 	if (result == true) {
-		// 		
-		// 	} else {
-		// 		this.openSnackBar('Incorrect Username and Password');	
-		// 		this.signinForm.setValue({ username: '', password: '', rememberMe: false });
-
-		// 		this.submitButton.disabled = false;
-		// 		this.progressBar.mode = 'determinate';
-		// 	}
-		// });
 
 		this._as.login(signinData).then(status => {
 			alert('Promise method in');
@@ -62,7 +48,6 @@ export class SigninComponent implements OnInit {
 					this.signinForm.setValue({ username: '', password: '', rememberMe: false });
 	
 					this.submitButton.disabled = false;
-					// this.progressBar.mode = 'determinate';
 				}
 			} catch (e) {
 				alert(e);
