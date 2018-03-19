@@ -13,6 +13,9 @@
     border-width: 1px;
     border-style: solid;
   }
+  .file-upload:hover {
+    cursor: pointer;
+  }
   .upload-btn-wrapper input[type=file] {
     font-size: 100px;
     position: absolute;
@@ -32,4 +35,22 @@
   mat-card {
     box-shadow: none !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  mat-card-title {
+    margin-bottom: 0px;
+  }
+
+  input[type=file]:hover {
+    cursor: pointer;
+  }
+
+  button {
+    font-size: 12px;
+    line-height: 18px;
+    top: -4px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 4px;
+    padding: 0px;
   }
