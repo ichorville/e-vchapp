@@ -17,17 +17,36 @@ export class SerialUploadComponent implements OnInit {
 		{ name: 'GO 1000'}
 	];
 
+	uploadElements: any[];
+
 	public uploader: FileUploader = new FileUploader({ url: 'https://10.20.10.21/file/upload' });
 	public hasBaseDropZoneOver: boolean = false;
 	console = console;
 
 	isSelected = false;
+	selectedElement: string;
 
-	constructor () { }
+	constructor () {
+		this.uploadElements = [];
+	}
 
 	ngOnInit() {
-		this.uploader.onAfterAddingFile = (file) => { 
+		this.productCodes.forEach(element => {
+			this.uploadElements.push({
+				'code': element['name'],
+				'uploader': new FileUploader({ 
+					url: 'https://10.20.10.21/file/upload' 
+				})
+			});
+		});
+
+		this.uploader.onAfterAddingFile = (file) => {
+			
+			// this.addToQueue();
+
 			this.uploader.queue.forEach(element => {
+				console.log(element._file);
+				
 				if (element['file']['name'] == file['file']['name']) {
 					let arr = [];
 					this.uploader.queue.forEach(element => {
@@ -40,7 +59,7 @@ export class SerialUploadComponent implements OnInit {
 					}
 				}
 				if ((element['file']['type'] == 'application/vnd.ms-excel') || (element['file']['type'] == 'text/plain')) {
-
+					
 				} else {
 					this.uploader.removeFromQueue(element);
 				}
@@ -53,11 +72,55 @@ export class SerialUploadComponent implements OnInit {
 	}
 
 	onChange(event) {
-		console.log(event.value);
-		if (event.value == undefined) {
-			this.isSelected = false;
-		} else {
-			this.isSelected = true;
+		try {
+			if (event.value == undefined) {
+				this.isSelected = false;
+			} else {
+				this.isSelected = true;
+			}
+			this.selectedElement = event['value']['name'];
+		} catch (e) {
+			this.selectedElement = 'undefined';
 		}
+	}
+
+	dropped(event) {
+		console.log(event);
+		this.addToQueue(event);
+	}
+
+	addToQueue(event) {
+		this.uploadElements.forEach(element => {
+			if (element['code'] == this.selectedElement) {
+				element['uploader'].addToQueue(event);
+			}
+
+			element['uploader'].onAfterAddingFile = (file) => { 
+				element['uploader'].queue.forEach(element => {
+					if (element['file']['name'] == file['file']['name']) {
+						let arr = [];
+						element['uploader'].queue.forEach(element => {
+							if (element['file']['name'] == file['file']['name']) {
+								arr.push(element);
+							}
+						});
+						if (arr.length > 1) {
+							element['uploader'].removeFromQueue(element);
+						}
+					}
+					if ((element['file']['type'] == 'application/vnd.ms-excel') || (element['file']['type'] == 'text/plain')) {
+	
+					} else {
+						element['uploader'].removeFromQueue(element);
+					}
+				});
+			};
+		});
+	}
+
+	onSelectChange(event) {
+		console.log(event);
+		let fileList: FileList = event.target.files;
+		console.log(fileList);
 	}
 }
