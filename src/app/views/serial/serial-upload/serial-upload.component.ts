@@ -41,12 +41,7 @@ export class SerialUploadComponent implements OnInit {
 		});
 
 		this.uploader.onAfterAddingFile = (file) => {
-			
-			// this.addToQueue();
-
-			this.uploader.queue.forEach(element => {
-				console.log(element._file);
-				
+			this.uploader.queue.forEach(element => {			
 				if (element['file']['name'] == file['file']['name']) {
 					let arr = [];
 					this.uploader.queue.forEach(element => {
@@ -85,7 +80,10 @@ export class SerialUploadComponent implements OnInit {
 	}
 
 	dropped(event) {
-		console.log(event);
+		this.addToQueue(event);
+	}
+
+	selected(event) {
 		this.addToQueue(event);
 	}
 
@@ -116,11 +114,5 @@ export class SerialUploadComponent implements OnInit {
 				});
 			};
 		});
-	}
-
-	onSelectChange(event) {
-		console.log(event);
-		let fileList: FileList = event.target.files;
-		console.log(fileList);
 	}
 }
