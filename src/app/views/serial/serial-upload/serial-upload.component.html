@@ -22,8 +22,8 @@
 				<input 
 					type="file"
 					ng2FileSelect
-					multiple
-					(change)="onSelectChange($event)"
+					multiple 
+					(onFileSelected)="selected($event)"
 					[disabled]="!isSelected"
 					[uploader]="uploader"/>
 			</div>
