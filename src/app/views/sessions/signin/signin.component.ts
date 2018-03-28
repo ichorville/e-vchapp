@@ -35,7 +35,6 @@ export class SigninComponent implements OnInit {
 		this.submitButton.disabled = true;
 
 		this._as.login(signinData).then(status => {
-			alert('Promise method in');
 			try {
 				if (status == 200) {
 					this.openSnackBar('Login Successful');
@@ -50,7 +49,7 @@ export class SigninComponent implements OnInit {
 					this.submitButton.disabled = false;
 				}
 			} catch (e) {
-				alert(e);
+				this.openSnackBar('Incorrect Username and Password');	
 			}
 		});
 	}
