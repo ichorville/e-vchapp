@@ -17,15 +17,15 @@ export class SerialUploadComponent implements OnInit {
 		{ name: 'GO 1000'}
 	];
 
-	uploadElements: any[];
-
-	public uploader: FileUploader = new FileUploader({ url: 'https://10.20.10.21/file/upload' });
 	public hasBaseDropZoneOver: boolean = false;
-	console = console;
-
 	isSelected = false;
 	selectedElement: string;
+	uploadElements: any[];
 
+	public uploader: FileUploader = new FileUploader({ 
+		url: 'http://10.20.10.21/file/upload'
+	});
+	
 	constructor () {
 		this.uploadElements = [];
 	}
@@ -35,7 +35,10 @@ export class SerialUploadComponent implements OnInit {
 			this.uploadElements.push({
 				'code': element['name'],
 				'uploader': new FileUploader({ 
-					url: 'https://10.20.10.21/file/upload' 
+					url: 'http://10.20.10.21/file/upload',
+					additionalParameter: {
+						type: element['name']
+					}
 				})
 			});
 		});
@@ -92,7 +95,6 @@ export class SerialUploadComponent implements OnInit {
 			if (element['code'] == this.selectedElement) {
 				element['uploader'].addToQueue(event);
 			}
-
 			element['uploader'].onAfterAddingFile = (file) => { 
 				element['uploader'].queue.forEach(element => {
 					if (element['file']['name'] == file['file']['name']) {
