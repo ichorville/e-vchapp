@@ -26,7 +26,7 @@ export class AuthService implements CanActivate {
 		private http: Http,
 		private router: Router
 	) { 
-		this.url = `https://10.20.10.21/evservice/token`;
+		this.url = `http://10.20.10.21/evservice/token`;
 		this.headers = new Headers({
 			'Content-Type': 'application/x-www-form-urlencoded, charset=utf-8'	
 		});
@@ -43,19 +43,15 @@ export class AuthService implements CanActivate {
 	}
 
 	login(formData: any): Promise<any> {
-		alert('Login Service Entered');
 		let object = `grant_type=password&username=${formData['username']}&password=${formData['password']}`;
 		try {
 			return this.http.post(this.url, object, this.options).toPromise().then((response) => {
-				alert(response.status);
 				return response.status;
 			}).catch(error => {
-				console.log(error);
-				alert(error);
+				localStorage.clear();
 			});
 		} catch (error) {
-			console.log(error);
-			alert(error);
+			localStorage.clear();
 		}
 	}
 }
