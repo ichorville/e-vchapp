@@ -1,0 +1,8 @@
+:host/deep/app-simple-datatable .Table-row {
+    height: 35px !important;
+}
+
+:host/deep/app-simple-datatable .Table-row-item {
+    top: -3px;
+    position: relative;
+}
