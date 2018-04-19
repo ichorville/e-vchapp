@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { FileUploader, FileLikeObject } from 'ng2-file-upload';
+import { FileUploader, FileLikeObject, FileUploaderOptions } from 'ng2-file-upload';
 
 @Component({
 	selector: 'app-serial-upload',
@@ -22,12 +22,16 @@ export class SerialUploadComponent implements OnInit {
 	selectedElement: string;
 	uploadElements: any[];
 
+	uo: FileUploaderOptions = {};
+
 	public uploader: FileUploader = new FileUploader({ 
 		url: 'http://10.20.10.21/file/upload'
 	});
 	
 	constructor () {
 		this.uploadElements = [];
+		this.uo.headers = [{ name: 'x-ms-blob-type', value : 'BlockBlob' } ]
+		this.uploader.setOptions(this.uo);
 	}
 
 	ngOnInit() {
@@ -41,10 +45,17 @@ export class SerialUploadComponent implements OnInit {
 					}
 				})
 			});
+			let currentHeader: FileUploaderOptions = {};
+			currentHeader.headers = [{ name: element['name'], value: element['name']}];
+			this.uploadElements.forEach(uploadElement => {
+				if (uploadElement['code'] == element['name']) {
+					uploadElement['uploader'].setOptions(currentHeader);
+				}
+			});
 		});
 
 		this.uploader.onAfterAddingFile = (file) => {
-			this.uploader.queue.forEach(element => {			
+			this.uploader.queue.forEach(element => {		
 				if (element['file']['name'] == file['file']['name']) {
 					let arr = [];
 					this.uploader.queue.forEach(element => {
@@ -91,11 +102,18 @@ export class SerialUploadComponent implements OnInit {
 	}
 
 	addToQueue(event) {
+		console.log(event);
+		event[0].additionalParameter = {
+			type: this.selectedElement
+		};
+
 		this.uploadElements.forEach(element => {
+			console.log(element);
 			if (element['code'] == this.selectedElement) {
 				element['uploader'].addToQueue(event);
 			}
 			element['uploader'].onAfterAddingFile = (file) => { 
+				console.log(element['formData']);	
 				element['uploader'].queue.forEach(element => {
 					if (element['file']['name'] == file['file']['name']) {
 						let arr = [];
