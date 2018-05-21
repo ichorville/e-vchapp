@@ -1,0 +1,25 @@
+.upload-btn-wrapper {
+  position: relative;
+  display: inline-block;
+  right: 0;
+  position: absolute;
+  margin-top: -10px;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+
+.file-upload {
+    border-style: dotted;
+}
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+mat-icon {
+    font-size: 18px;
+}

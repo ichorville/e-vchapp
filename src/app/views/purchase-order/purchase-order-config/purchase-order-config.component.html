@@ -1,0 +1,111 @@
+<mat-card class="p-0">
+	<mat-card-title class="">
+		<div class="card-title-text">Approve Purchase Order:</div>
+		<mat-divider></mat-divider>
+	</mat-card-title>
+	<mat-card-content>
+		<form [formGroup]="formUpper">
+			<div fxLayout="row" fxLayoutWrap="wrap">
+				<div fxFlex="100" fxFlex.gt-xs="45" class="pr-1">
+					<div class="pb-1">
+						<mat-form-field class="full-width">
+                            <input 
+								matInput
+								name="serialStart"
+								formControlName="serialStart"
+								autocomplete="off"
+								placeholder="Start Serial">
+
+							<mat-error *ngIf="formUpper.controls['serialStart'].hasError('required') && 
+								formUpper.controls['serialStart'].touched">Field is required</mat-error>
+                        </mat-form-field>
+					</div>
+				</div>
+				<div fxFlex="100" fxFlex.gt-xs="45" class="pr-1">
+					<div class="pb-1">
+						<mat-form-field class="full-width">
+							<input 
+								matInput
+								name="serialEnd"
+								formControlName="serialEnd"
+								autocomplete="off"
+								placeholder="End Serial">
+
+							<mat-error *ngIf="formUpper.controls['serialEnd'].hasError('required') && 
+								formUpper.controls['serialEnd'].touched">Field is required</mat-error>
+                        </mat-form-field>
+					</div>
+				</div>
+				<div fxFlex="100" fxFlex.gt-xs="10" class="pr-1">
+					<div class="pb-1">
+						<button mat-raised-button color="accent" class="mr-1"
+							[disabled]="formUpper.invalid"
+							(click)="filterResults(formUpper)">View</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<form [formGroup]="formLower">
+			<div fxLayout="row" fxLayoutWrap="wrap">
+				<div fxFlex="100" fxFlex.gt-xs="45" class="pr-1">
+					<div class="pb-1">
+						<mat-form-field class="full-width">
+							<input 
+								matInput
+								name="serialStart"
+								formControlName="serialStart"
+								autocomplete="off"
+								placeholder="Start Serial">
+
+							<mat-error *ngIf="formLower.controls['serialStart'].hasError('required') && 
+								formLower.controls['serialStart'].touched">Field is required</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<div fxFlex="100" fxFlex.gt-xs="45" class="pr-1">
+					<div class="pb-1">
+						<mat-form-field class="full-width">
+							<input 
+								matInput
+								name="qty"
+								formControlName="qty"
+								autocomplete="off"
+								placeholder="Quantity">
+
+							<mat-error *ngIf="formLower.controls['qty'].hasError('required') && 
+								formLower.controls['qty'].touched">Field is required</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<div fxFlex="100" fxFlex.gt-xs="10" class="pr-1">
+					<div class="pb-1">
+						<button mat-raised-button color="accent" class="mr-1"
+							[disabled]="formLower.invalid"
+							(click)="filterResults(formLower)">View</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<!-- Simple datatable module -->
+		<app-simple-datatable
+			*ngIf="loadingCompleted"
+			[isSearchable]="true"
+			[isMultiSelect]="false"
+			[isDeletable]="false"
+			[rows]="rows"
+			[columns]="columns"
+			(onLoad)="closeLoader($event)">
+		</app-simple-datatable>
+
+		<div fxLayout="row" fxLayoutWrap="wrap">
+			<div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+				<div class="pb-1" style="padding-top: 15px;">
+					<button mat-raised-button color="primary" class="mr-1"
+						(click)="SubmitPO()">Submit</button>
+				</div>
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>
